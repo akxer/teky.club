@@ -7,5 +7,5 @@ fs.readFile('src/index.html', 'utf8', (err, markup) => {
   /** add stylesheet to output html*/
   $('head').prepend('\n<link rel="stylesheet" href="index.css">\n');
   /** write output to dist folder*/
-  fs.writeFile('dist/index.html', $.html(), 'utf8');
+  fs.writeFileSync('dist/index.html', $.html(), 'utf8');
 });
