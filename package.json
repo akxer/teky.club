@@ -12,8 +12,7 @@
     "remove-dist": "node_modules/.bin/rimraf ./dist",
     "build:html": "node server/buildHtml.js",
     "prebuild": "npm-run-all clean-dist lint build:html",
-    "build": "node server/build.js",
-    "postbuild": "NODE_ENV=production node index.js"
+    "build": "node server/build.js"
   },
   "author": "Abhirav Kumar",
   "license": "MIT",
