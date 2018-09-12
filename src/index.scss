@@ -1,0 +1,19 @@
+.pacifico{
+  font-family: 'Pacifico', cursive;
+}
+
+body{
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.outer {
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
