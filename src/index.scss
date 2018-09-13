@@ -1,8 +1,10 @@
-.pacifico{
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+
+.pacifico {
   font-family: 'Pacifico', cursive;
 }
 
-body{
+body {
   font-family: 'Ubuntu', sans-serif;
 }
 
@@ -16,4 +18,11 @@ body{
 .middle {
   display: table-cell;
   vertical-align: middle;
+}
+
+.modal-header{
+  border-bottom: 0;
+}
+.modal-footer{
+  border-top: 0;
 }

@@ -32,7 +32,11 @@ module.exports = {
     rules: [
       {
         test: /\.js$/, include: path.join(__dirname, 'src'), loader: 'babel-loader',
-        query: {"presets": ["react", "es2015"]}
+        query: {"presets": ["react", "es2015"], "plugins": [
+            ["transform-class-properties", {"spec": true}],
+            "transform-object-rest-spread"
+          ]
+        }
       },
       {
         test: /(\.s?css)$/,

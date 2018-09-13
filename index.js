@@ -6,7 +6,7 @@ const ip = '0.0.0.0';
 const app = express();
 
 app.get('/favicon.ico', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public/favicon.ico'))
+  res.sendFile(path.join(__dirname, 'public/favicon.ico'));
 });
 
 if (process.env.NODE_ENV === 'production') {

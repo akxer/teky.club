@@ -33,7 +33,12 @@ module.exports = {
     rules: [
       {
         test: /\.js$/, include: path.join(__dirname, 'src'), loader: 'babel-loader',
-        query: {"presets": ["react", "es2015", "react-hmre"]}
+        query: {
+          "presets": ["react", "es2015", "react-hmre"], "plugins": [
+            ["transform-class-properties", {"spec": true}],
+            "transform-object-rest-spread"
+          ]
+        }
       },
       {test: /(\.s?css)$/, loaders: ['style-loader', 'css-loader', 'sass-loader']},
       {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader'},
