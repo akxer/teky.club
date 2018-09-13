@@ -1,4 +1,5 @@
 const webpack = require('webpack'), path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   devtool: 'eval',
@@ -15,9 +16,16 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
+  profile: true,
   /** dev server config*/
   devServer: {
     contentBase: path.resolve(__dirname, 'src/js')
+  },
+  resolve: {
+    extensions: ['.js'],
+    alias: {
+      'jquery': 'jquery/dist/jquery.slim.js'
+    }
   },
   /** plugin hmr for hot reload and no emitting if error*/
   plugins: [
@@ -26,7 +34,8 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery"
-    })
+    }),
+    new BundleAnalyzerPlugin()
   ],
   module: {
     /** all js file go through babel loader with preset react hmre in development environment*/

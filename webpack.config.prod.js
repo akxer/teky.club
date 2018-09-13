@@ -1,4 +1,6 @@
 const webpack = require('webpack'), path = require('path'), MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production')
@@ -14,8 +16,20 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
+  profile: true,
   optimization: {
-    minimize: true
+    minimize: true,
+    minimizer: [
+      new UglifyJsPlugin({
+        parallel: true
+      })
+    ]
+  },
+  resolve: {
+    extensions: ['.js'],
+    alias: {
+      'jquery': 'jquery/dist/jquery.slim.js'
+    }
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -24,15 +38,17 @@ module.exports = {
       filename: "index.css"
     }),
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery"
-    })
+      $: "jquerySlim",
+      jQuery: "jquerySlim"
+    }),
+    new CompressionPlugin()
   ],
   module: {
     rules: [
       {
         test: /\.js$/, include: path.join(__dirname, 'src'), loader: 'babel-loader',
-        query: {"presets": ["react", "es2015"], "plugins": [
+        query: {
+          "presets": ["react", "es2015"], "plugins": [
             ["transform-class-properties", {"spec": true}],
             "transform-object-rest-spread"
           ]

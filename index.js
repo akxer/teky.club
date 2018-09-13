@@ -13,6 +13,12 @@ if (process.env.NODE_ENV === 'production') {
   /** use compression in production*/
   app.use(compression());
   /** serve static files in dist using express*/
+  app.get('*.js', function (req, res, next) {
+    req.url = req.url + '.gz';
+    console.log(req.url);
+    res.set('Content-Encoding', 'gzip');
+    next();
+  });
   app.use(express.static('dist'));
   /** make all requests send index.html*/
   app.get('*', function (req, res) {
