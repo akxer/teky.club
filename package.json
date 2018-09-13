@@ -1,7 +1,7 @@
 {
-  "name": "ReactWebpackNode",
+  "name": "teky.club",
   "version": "1.0.0",
-  "description": "Boilerplate for react webpack node",
+  "description": "Staging website",
   "main": "index.js",
   "scripts": {
     "start": "npm-run-all --parallel open lint:watch",
